@@ -1,0 +1,60 @@
+<h2>No cooking, just eating</h2>
+    
+    <div id="content">
+        <div class="item">
+            <div class="image">
+                <img src="/img/Pick_1.gif" alt="pick" width="140">
+            </div>
+            <div class="description">
+                <h3>Pick</h3>
+                <p>100+ menu of all-natural dishes.</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="image">
+                <img src="/img/heat.gif" alt="heat" width="140">
+            </div>
+            <div class="description">
+                <h3>Heat</h3>
+                <p>Cooked & delivered.</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="image">
+                <img src="/img/eat_1_1.gif" alt="eat" width="140">
+            </div>
+            <div class="description">
+                <h3>Eat</h3>
+                <p>Delicious & nutritious</p>
+            </div>
+        </div>
+        
+        <div class="item">
+            <div class="image">
+                <img src="/img/repeat---Copy.gif" alt="repeat" width="140">
+            </div>
+            <div class="description">
+                <h3>Repeat</h3>
+                <p>Skip a week or cancel any time</p>
+            </div>
+        </div>
+    </div>
+
+    <h2>Our chefs are making these right now!</h2>
+
+    <div id="topMeals">
+
+        {{#each products}}
+        <div class="topItems">
+            <div class="image">
+                <img src={{this.img}} width="240">
+            </div>
+            <div class="description">
+                <h3>{{this.name}}</h3>
+                <p>${{this.price}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>

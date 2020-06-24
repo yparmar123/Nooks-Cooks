@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <title>{{title}}</title>
+    </head>
+    <body>
+        <header>
+            <a href="/"><img src="/img/Logo.png"></a>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/MealPackages">Meal Packages</a></li>               
+                </ul>
+            </nav>
+            <button class="login-btn">Login</button>
+            <button class="signup-btn">Sign Up</button>
+        </header>
+        
+        <div class="login-bg">
+            <div class="login">
+                <h2>Customer Login</h2>
+                <form>
+                    <label for="email">Email: </label>
+                    <input type="email" name="email">
+                    <label for="password">Password: </label>
+                    <input type="password" name="password">
+                    <button>Sign In</button>
+                </form>
+                <span class="close-log">X</span>
+            </div>
+        </div>
+    
+        <div class="signup-bg">
+            <div class="signup">
+                <h2>Create Account </h2>
+                <form>
+                    <label for="fName">First Name: </label>
+                    <input type="text" name="fName">
+                    <label for="lName">Last Name: </label>
+                    <input type="text" name="lName">
+                    <label for="email">Email: </label>
+                    <input type="email" name="email">
+                    <label for="password">Password: </label>
+                    <input type="password" name="password">
+                    <button>Sign Up</button>
+                </form>
+                <span class="close-sign">X</span>
+            </div>
+        </div>
+    
+        <div class="hero">
+            <div class="hero-text">
+                <h1>{{hero}}</h1>
+            </div>
+        </div>
+        
+        <main>
+            {{{body}}}
+        </main>
+        
+        <footer>
+            <p>
+                 © 2020 Nook's Cooks North America Inc.
+            </p>
+            <div class="socialMedia">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-google"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-linkedin"></a>
+            </div>
+            <div class="paymentIMG">
+                <img src="/img/amex.svg">
+                <img src="/img/apple.svg">
+                <img src="/img/google.svg">
+                <img src="/img/master.svg">
+                <img src="/img/shopify.svg">
+                <img src="/img/visa.svg">
+            </div>
+
+        </footer>
+        <script src="/js/events.js"></script>
+    </body>
+    </html>
