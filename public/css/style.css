@@ -111,26 +111,6 @@ footer {
     width: 450px;
 }
 
-.login-bg, .signup-bg {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.5s;
-}
-
-.bg-active {
-    visibility: visible;
-    opacity: 1;
-}
-
 .login, .signup {
     position: relative;
     background-color: white;
@@ -142,13 +122,9 @@ form {
     align-items: center;
     display: flex;
     flex-direction: column;
-    
+    width: 30%;
 }
 
-.login {
-    width: 25%;
-    height: 250px;
-}
 
 .signup {
     width: 27%;
@@ -177,6 +153,7 @@ input {
     width: 50%;
     border-radius: 5px;
     border-style: outset;
+    margin: 5px;
 }
 
 input:focus {
@@ -246,3 +223,8 @@ footer p {
     text-align: center;
 }
 
+.form {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10%;
+}
