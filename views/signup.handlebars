@@ -2,13 +2,17 @@
 <div class="form">
     <form method="POST" action="signup" id="sign">
         <label for="fName">First Name: </label>
-        <input type="text" name="fName">
+        <input type="text" name="fName" value={{fValue}}>
+        <div class="error">{{fNameError}}</div>
         <label for="lName">Last Name: </label>
-        <input type="text" name="lName">
+        <input type="text" name="lName" value={{lValue}}>
+        <div class="error">{{lNameError}}</div>
         <label for="email">Email: </label>
-        <input type="email" name="email">
+        <input type="email" name="email" value={{eValue}}>
+        <div class="error">{{emailError}}</div>
         <label for="password">Password: </label>
-        <input type="password" name="password">
+        <input type="password" name="password" value={{pValue}}>
+        <div class="error">{{passError}}</div>
         <button value="submit" id="sign" name="sign">Sign Up</button>
     </form>
 </div>

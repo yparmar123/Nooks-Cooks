@@ -46,31 +46,90 @@ app.get("/signup", (req, res) => {
 app.post("/login", (req, res) => {
     let emailError = "";
     let passError = "";
+    const error = "This field is required."
     if(req.body.email === "")
     {
-        emailError = "You must enter an email address";
+        emailError = error;
     }
 
     if(req.body.password === "")
     {
-        passError = "You must enter a password";
+        passError = error;
     }
 
     if(emailError !== "" || passError !== "")
     {
-        res.render(`home`, {
+        res.render("login", {
             title: req.title,
-            products: req.products,
-            packages: req.packages,
-            hero: req.hero,
             emailError: emailError,
             passError: passError
-        })
+        });
     }
     else {
         res.redirect("/");
     }
 });
+
+app.post("/signup", (req,res)=>{
+    let fNameError = "";
+    let lNameError = "";
+    let emailError = "";
+    let passError = "";
+    const error = "This field is required.";
+    const nameErr = "This field may only contain letters.";
+    const passRegex = /^[a-zA-Z0-9]{6,12}$/;
+    const nameRegex = /^[a-zA-Z]*$/;
+    
+    
+    if (req.body.fName === "")
+    {
+        fNameError = error;
+    } else if (!nameRegex.test(req.body.fName))
+    {
+        fNameError = nameErr;
+    }
+
+    if (req.body.lName === "")
+    {
+        lNameError = error;
+    }
+    else if (!nameRegex.test(req.body.lName))
+    {
+        lNameError = nameErr;
+    }
+
+    if (req.body.email === "")
+    {
+        emailError = error;
+    }
+
+    if (req.body.password === "")
+    {
+        passError = error;
+    } else if (!passRegex.test(req.body.password))
+    {
+        passError = "Password must only contain letters and numbers and be between 6-12 characters."
+    }
+
+    if(emailError !== "" || passError !== "" || fNameError !== "" || lNameError !== "")
+    {
+        res.render("signup", {
+            title: req.title,
+            emailError: emailError,
+            passError: passError,
+            fNameError: fNameError,
+            lNameError: lNameError,
+            fValue: req.body.fName,
+            lValue: req.body.lName,
+            pValue: req.body.password,
+            eValue: req.body.email
+        });
+    }
+    else {
+        res.redirect("/");
+    }
+
+})
 
 const PORT = process.env.PORT || 3000;
 
