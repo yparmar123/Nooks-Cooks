@@ -4,21 +4,33 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/style.css">
         
         <title>{{title}}</title>
     </head>
     <body>
         <header>
-            <a href="/"><img src="/img/Logo.png"></a>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/MealPackages">Meal Packages</a></li>               
-                </ul>
-            </nav>
-            <a href="/login"><button class="login-btn">Login</button></a>
-            <a href="/signup"><button class="signup-btn">Sign Up</button></a>
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-lg-5 col-md-12" id="logo">
+                        <a href="/"><img src="/img/Logo.png"></a>
+                    </div>
+                    <div class="col-lg-6 col-md-12" id="nav">
+                        <nav>
+                            <ul>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/MealPackages">Meal Packages</a></li>               
+                            </ul>
+                            <a href="/login" class="btn btn-dark">Log In</a>
+                            <a href="/signup" class="btn btn-dark">Sign Up</a>
+                        </nav>
+                        
+                    </div>
+                    
+                </div>
+            </div>
         </header>
         
         <main>
@@ -26,25 +38,31 @@
         </main>
         
         <footer>
-            <p>
-                 © 2020 Nook's Cooks North America Inc.
-            </p>
-            <div class="socialMedia">
-                <a href="#" class="fa fa-facebook"></a>
-                <a href="#" class="fa fa-google"></a>
-                <a href="#" class="fa fa-twitter"></a>
-                <a href="#" class="fa fa-linkedin"></a>
+            <div class="row">
+                <div class="col-lg-4">    
+                    <p>
+                        © 2020 Nook's Cooks North America Inc.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="socialMedia">
+                        <a href="#" class="fa fa-facebook"></a>
+                        <a href="#" class="fa fa-google"></a>
+                        <a href="#" class="fa fa-twitter"></a>
+                        <a href="#" class="fa fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="paymentIMG">
+                        <img src="/img/amex.svg">
+                        <img src="/img/apple.svg">
+                        <img src="/img/google.svg">
+                        <img src="/img/master.svg">
+                        <img src="/img/shopify.svg">
+                        <img src="/img/visa.svg">
+                    </div>
+                </div>
             </div>
-            <div class="paymentIMG">
-                <img src="/img/amex.svg">
-                <img src="/img/apple.svg">
-                <img src="/img/google.svg">
-                <img src="/img/master.svg">
-                <img src="/img/shopify.svg">
-                <img src="/img/visa.svg">
-            </div>
-
         </footer>
-        <script src="/js/events.js"></script>
     </body>
     </html>

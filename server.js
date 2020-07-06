@@ -70,6 +70,12 @@ app.post("/login", (req, res) => {
     }
 });
 
+app.get("/dashboard", (req,res)=>{
+    res.render("dashboard", {
+        title: "Dashboard"
+    });
+});
+
 app.post("/signup", (req,res)=>{
     let fNameError = "";
     let lNameError = "";
@@ -79,34 +85,35 @@ app.post("/signup", (req,res)=>{
     const nameErr = "This field may only contain letters.";
     const passRegex = /^[a-zA-Z0-9]{6,12}$/;
     const nameRegex = /^[a-zA-Z]*$/;
+    const {fName, lName, email, password} = req.body
     
     
-    if (req.body.fName === "")
+    if (fName === "")
     {
         fNameError = error;
-    } else if (!nameRegex.test(req.body.fName))
+    } else if (!nameRegex.test(fName))
     {
         fNameError = nameErr;
     }
 
-    if (req.body.lName === "")
+    if (lName === "")
     {
         lNameError = error;
     }
-    else if (!nameRegex.test(req.body.lName))
+    else if (!nameRegex.test(lName))
     {
         lNameError = nameErr;
     }
 
-    if (req.body.email === "")
+    if (email === "")
     {
         emailError = error;
     }
 
-    if (req.body.password === "")
+    if (password === "")
     {
         passError = error;
-    } else if (!passRegex.test(req.body.password))
+    } else if (!passRegex.test(password))
     {
         passError = "Password must only contain letters and numbers and be between 6-12 characters."
     }
@@ -119,17 +126,32 @@ app.post("/signup", (req,res)=>{
             passError: passError,
             fNameError: fNameError,
             lNameError: lNameError,
-            fValue: req.body.fName,
-            lValue: req.body.lName,
-            pValue: req.body.password,
-            eValue: req.body.email
+            fValue: fName,
+            lValue: lName,
+            pValue: password,
+            eValue: email
         });
     }
     else {
-        res.redirect("/");
+        const sgMail = require('@sendgrid/mail');
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+        const msg = {
+            to: `${email}`,
+            from: `nooks@cooks.ca`,
+            subject: "Welcome to Nook's Cooks!",
+            html:
+            `Welcome ${fName} ${lName}!
+            `
+        };
+        sgMail.send(msg)
+        .then(()=>{
+            res.redirect("/dashboard");
+        })
+        .catch(err=>{
+            console.log(`Error: ${err}`);
+        });  
     }
-
-})
+});
 
 const PORT = process.env.PORT || 3000;
 

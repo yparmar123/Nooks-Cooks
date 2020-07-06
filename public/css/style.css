@@ -11,15 +11,14 @@ header {
     text-align: center;
     background-color: white;
     border-radius: 0%;
-    display: flex;
     align-items: center;
     padding: 30px;
     justify-content: center;
     font-family: 'Balsamiq Sans', cursive;
-    font-size: 2em;
+    
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     text-align: center;
 }
 
@@ -31,13 +30,13 @@ body {
 ul {
     display: flex;
     list-style-type: none;
-    justify-content: center;
 }
 
 li a {
     text-decoration: none;
     flex: 1;
-    padding: 20px;
+    padding: 5px;
+    font-size: 15px;
 }
 
 footer p {
@@ -46,6 +45,7 @@ footer p {
 
 footer {
     background-color:rgb(230, 65, 65);
+    margin-top: 40px;
 }
 
 #content {
@@ -69,7 +69,7 @@ footer {
 
 .hero {
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0,0,0,0.2)), url('/img/banner.jpg');
-    background-size: 100%;
+    background-size: cover;
     background-position: fill;
     background-repeat: no-repeat;
     height: 50%;
@@ -141,14 +141,6 @@ button {
     border-radius: 10px;
 }
 
-.close-log, .close-sign {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
 input {
     width: 290px;
     border-radius: 5px;
@@ -167,7 +159,7 @@ label {
 .fa {
     padding: 20px;
     font-size: 30px;
-    width: 30px;
+    width: 60px;
     text-align: center;
     text-decoration: none;
     border-radius: 10px;
@@ -198,7 +190,6 @@ label {
 }
 
 footer {
-    display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 30px;
@@ -206,11 +197,11 @@ footer {
 }
 
 footer p {
-    flex: 1;
+    align-items: center;
 }
 
 .socialMedia {
-    flex:2;
+
     text-align: center;
 }
 
@@ -219,7 +210,7 @@ footer p {
 }
 
 .paymentIMG {
-    flex: 1;
+   
     text-align: center;
 }
 
@@ -228,3 +219,35 @@ footer p {
     justify-content: center;
     padding-bottom: 70px;
 }
+
+#logo {
+    text-align: center;
+    align-items: center;
+}
+
+#nav {
+    text-align: center;
+    display: flex;
+    
+}
+
+nav {
+    text-align: center;
+    align-items: center;
+    display: flex;
+}
+
+body h2 {
+    padding: 30px;
+}
+
+.btn {
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.dash {
+    text-align: center;
+    margin-top: 20px;
+}
+

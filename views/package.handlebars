@@ -5,21 +5,23 @@
 </div>
 <h2>Pick a package, choose your meals, achieve your goal - it's that easy!</h2>
     
-    <div id="package">
+    <div class="container">
+        <div class="row">
         
-        {{#each packages}}
+            {{#each packages}}
 
-        <div class="package">
-            <div class="image">
-                <img src={{this.img}} width="240"> 
+            <div class="col-lg-3 col-md-6">
+                <div class="image">
+                    <img src={{this.img}} width="200"> 
+                </div>
+                <div class="description">
+                    <h3>{{this.name}}</h3>
+                    <p>
+                        {{this.desc}}<br>
+                        ${{this.price}}
+                    </p>
+                </div>
             </div>
-            <div class="description">
-                <h3>{{this.name}}</h3>
-                <p>
-                    {{this.desc}}<br>
-                    ${{this.price}}
-                </p>
-            </div>
-        </div>
-        {{/each}}        
+            {{/each}}
+        </div>        
     </div>
