@@ -144,7 +144,7 @@ app.post("/signup", (req,res)=>{
             We are glad to serve you healthy and tastey food! Feel free to check out our meal packages on our website as we have a wide variety of healthy yet tastey offerings!<br>
             We look forward to having you with us!<br><br>
             CEO<br>
-            Yuvraj Parmar<br>
+            Tom Nook<br>
             Nook's Cooks Inc.
             `,
         };
