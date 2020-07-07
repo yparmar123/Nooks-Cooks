@@ -36,7 +36,8 @@ li a {
     text-decoration: none;
     flex: 1;
     padding: 5px;
-    font-size: 15px;
+    margin: 10px;
+    font-size: 25px;
 }
 
 footer p {
@@ -227,23 +228,27 @@ footer p {
 
 #nav {
     text-align: center;
-    display: flex;
     
 }
 
 nav {
     text-align: center;
     align-items: center;
-    display: flex;
+    
 }
 
 body h2 {
     padding: 30px;
 }
 
+#nav .btn {
+    align-items: center;
+}
+
 .btn {
     margin: 5px;
     border-radius: 10px;
+    
 }
 
 .dash {
@@ -251,3 +256,7 @@ body h2 {
     margin-top: 20px;
 }
 
+.error {
+    color: #dd4b39;
+    font-size: 13px;
+}

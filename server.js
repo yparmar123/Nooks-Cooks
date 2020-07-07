@@ -115,7 +115,7 @@ app.post("/signup", (req,res)=>{
         passError = error;
     } else if (!passRegex.test(password))
     {
-        passError = "Password must only contain letters and numbers and be between 6-12 characters."
+        passError = "Password must only contain letters and numbers, and must be between 6-12 characters."
     }
 
     if(emailError !== "" || passError !== "" || fNameError !== "" || lNameError !== "")
@@ -137,11 +137,16 @@ app.post("/signup", (req,res)=>{
         sgMail.setApiKey(process.env.SENDGRID_API_KEY);
         const msg = {
             to: `${email}`,
-            from: `nooks@cooks.ca`,
+            from: `yuvrajparmar1060@gmail.com`,
             subject: "Welcome to Nook's Cooks!",
             html:
-            `Welcome ${fName} ${lName}!
-            `
+            `Welcome to the Nook's Cooks family ${fName} ${lName}!<br><br>
+            We are glad to serve you healthy and tastey food! Feel free to check out our meal packages on our website as we have a wide variety of healthy yet tastey offerings!<br>
+            We look forward to having you with us!<br><br>
+            CEO<br>
+            Yuvraj Parmar<br>
+            Nook's Cooks Inc.
+            `,
         };
         sgMail.send(msg)
         .then(()=>{
@@ -149,7 +154,7 @@ app.post("/signup", (req,res)=>{
         })
         .catch(err=>{
             console.log(`Error: ${err}`);
-        });  
+        }); 
     }
 });
 
