@@ -21,10 +21,15 @@
                         <nav class="navbar">
                             <ul>
                                 <li><a href="/">Home</a></li>
-                                <li><a href="/MealPackages">Meal Packages</a></li>               
+                                <li><a href="/products/MealPackages">Meal Packages</a></li>               
                             </ul> 
-                            <a href="/login" class="btn btn-dark">Log In</a>
-                            <a href="/signup" class="btn btn-dark">Sign Up</a>
+
+                            {{#if sessions.user}}
+                                <a href="/account/logout">Log Out</a>
+                            {{else}}
+                                <a href="/account/login" class="btn btn-dark">Log In</a>
+                                <a href="/account/signup" class="btn btn-dark">Sign Up</a>
+                            {{/if}}
                         </nav>
                         
                     </div>

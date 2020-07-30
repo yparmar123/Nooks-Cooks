@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const loginAuth = require("../model/login-auth");
 
 router.get("/login", (req, res)=>{
     res.render("account/login", {
@@ -39,8 +40,6 @@ router.post("/login", (req, res) => {
         res.redirect("/");
     }
 });
-
-
 
 router.post("/signup", (req,res)=>{
     let fNameError = "";
@@ -99,9 +98,10 @@ router.post("/signup", (req,res)=>{
         });
     }
     else {
-        const sgMail = require('@sendgrid/mail');
-        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-        const msg = {
+        loginAuth.registerUser(req.body).then(()=>{
+            const sgMail = require('@sendgrid/mail');
+            sgMail.setApiKey(`${process.env.SENDGRID_API_KEY}`);
+            const msg = {
             to: `${email}`,
             from: `yuvrajparmar1060@gmail.com`,
             subject: "Welcome to Nook's Cooks!",
@@ -113,15 +113,30 @@ router.post("/signup", (req,res)=>{
             Tom Nook<br>
             Nook's Cooks Inc.
             `,
-        };
-        sgMail.send(msg)
-        .then(()=>{
-            res.redirect("/dashboard");
-        })
-        .catch(err=>{
-            console.log(`Error: ${err}`);
-        }); 
+            };
+            sgMail.send(msg)
+            .then(()=>{
+                res.redirect("/dashboard");
+            }).catch(err=>{
+                console.log(`Error: ${err}`);
+            }); 
+
+        }).catch((err)=>{
+            res.render("account/signup", {
+                title: req.title,
+                err: err,
+                fValue: fName,
+                lValue: lName,
+                pValue: password,
+                eValue: email
+            });
+        })                
     }
+});
+
+router.get("/logout" , (req, res) =>{
+    req.sessions.reset();
+    res.redirect("/");
 });
 
 module.exports = router;
