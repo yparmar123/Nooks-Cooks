@@ -2,6 +2,7 @@ const express = require("express");
 const exphbs  = require('express-handlebars');
 const bodyParser = require('body-parser');
 const loginAuth = require("./model/login-auth");
+const clientSessions = require("client-sessions");
 
 require('dotenv').config({path:"./config/keys.env"});
 
@@ -14,26 +15,23 @@ app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 app.use(clientSessions({
-    cookieName: "userSession",
+    cookieName: "session",
     secret: "web322_a35_user",
     duration: 2 * 60 * 1000,
     activeDuration: 1000 * 60
 }));
 
 app.use(clientSessions({
-    cookieName: "dataClerkSession",
+    cookieName: "dataSession",
     secret: "web322_a35_dataClerk",
     duration: 2 * 60 * 1000,
     activeDuration: 1000 * 60
 }));
 
-const ensureLogin = (req, res, next) => {
-    if(!req.session.user) {
-        res.redirect("/login");
-    } else {
-        next();
-    }
-};
+app.use((req, res, next) => {
+    res.locals.session = req.session;
+    next();
+})
 
 app.use((req, res, next) => {
     let route = req.baseUrl + req.path;

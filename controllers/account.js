@@ -33,11 +33,39 @@ router.post("/login", (req, res) => {
         res.render("account/login", {
             title: req.title,
             emailError: emailError,
-            passError: passError
+            passError: passError,
+            email: req.body.email
         });
     }
     else {
-        res.redirect("/");
+        req.body.userAgent = req.get("User-Agent");
+
+        loginAuth.checkUsers(req.body).then((user) => {
+            if (!user.dataClerk){
+                req.session.user = {
+                    email: user.email,
+                    fName: user.fName,
+                    lName: user.lName,
+                    dataClerk: user.dataClerk,
+                    loginHistory: user.loginHistory                
+                }
+                res.redirect("/dashboard");
+            } else {
+                req.dataSession.user = {
+                    email: user.email,
+                    fName: user.fName,
+                    lName: user.lName,
+                    dataClerk: user.dataClerk,
+                    loginHistory: user.loginHistory                
+                }
+                res.redirect("/dashboard");
+            }
+        }).catch((err) => {
+            res.render("account/login", {
+                err: err,
+                email: req.body.email
+            })
+        })
     }
 });
 
@@ -50,9 +78,10 @@ router.post("/signup", (req,res)=>{
     const nameErr = "This field may only contain letters.";
     const passRegex = /^[a-zA-Z0-9]{6,12}$/;
     const nameRegex = /^[a-zA-Z]*$/;
-    const {fName, lName, email, password} = req.body
-    
-    
+    const {fName, lName, email, password} = req.body;
+    req.body.dataClerk = false;
+
+
     if (fName === "")
     {
         fNameError = error;
@@ -116,7 +145,9 @@ router.post("/signup", (req,res)=>{
             };
             sgMail.send(msg)
             .then(()=>{
-                res.redirect("/dashboard");
+                res.render("account/login", {
+                    signedUp: '<div class="alert alert-success" role="alert">Thanks for signing up! Please log in to continue!</div>'
+                });
             }).catch(err=>{
                 console.log(`Error: ${err}`);
             }); 
@@ -135,7 +166,7 @@ router.post("/signup", (req,res)=>{
 });
 
 router.get("/logout" , (req, res) =>{
-    req.sessions.reset();
+    req.session.reset();
     res.redirect("/");
 });
 

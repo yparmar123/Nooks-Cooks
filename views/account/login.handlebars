@@ -1,9 +1,11 @@
 <h2>Customer Login</h2>
+
 <div class="form">
     <form method="POST" action="login" id="log">
-        
+        {{{signedUp}}}
+        <div class="error">{{err}}</div>
         <label for="email">Email: </label>
-        <input type="email" name="email">
+        <input type="email" name="email" value="{{email}}">
         <div class="error">{{emailError}}</div>
         
         <label for="password">Password: </label>

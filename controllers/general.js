@@ -10,10 +10,10 @@ router.get("/", (req, res)=>{
     });
 });
 
-router.get("/dashboard", (req,res)=>{
-    res.render("general/dashboard", {
-        title: "Dashboard"
+router.get("/noaccess", (req,res)=> {
+    res.render("general/noaccess", {
+        title: "Error No Access"
     });
-});
+})
 
 module.exports = router;

@@ -11,6 +11,7 @@ let userSchema = new Schema({
     password: String,
     fName: String,
     lName: String,
+    dataClerk: Boolean,
     loginHistory: [{
         dateTime: Date,
         userAgent: String
@@ -21,7 +22,7 @@ let User;
 
 module.exports.initialize = () => {
     return new Promise((resolve, reject) => {
-        let db = mongoose.createConnection(process.env.MONGODB_CONNECTION_STRING);
+        let db = mongoose.createConnection(process.env.MONGODB_CONNECTION_STRING, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
         db.on("error", (err)=>{
             reject(err);
         });
@@ -76,7 +77,7 @@ module.exports.checkUsers = (userData) => {
                         if(res === true) {
                             users[0].loginHistory.push({dataTime: (new Date()).toString(), userAgent: userData.userAgent});
 
-                            User.update({userName: users[0].userName },
+                            User.updateOne({userName: users[0].userName },
                                 { $set: {loginHistory: users[0].loginHistory}},
                                 {multi: false})
                             .exec()
