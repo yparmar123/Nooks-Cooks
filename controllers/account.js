@@ -49,7 +49,7 @@ router.post("/login", (req, res) => {
                     dataClerk: user.dataClerk,
                     loginHistory: user.loginHistory                
                 }
-                res.redirect("/dashboard");
+                res.redirect("/user/dashboard");
             } else {
                 req.dataSession.user = {
                     email: user.email,
@@ -58,7 +58,7 @@ router.post("/login", (req, res) => {
                     dataClerk: user.dataClerk,
                     loginHistory: user.loginHistory                
                 }
-                res.redirect("/dashboard");
+                res.redirect("/dataClerk/clerkdashboard");
             }
         }).catch((err) => {
             res.render("account/login", {

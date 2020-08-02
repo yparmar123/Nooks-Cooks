@@ -3,7 +3,7 @@ const router = express.Router();
 
 const ensureLogin = (req, res, next) => {
     if(!req.session.user && !req.dataSession.user) {
-        res.redirect("/login");
+        res.redirect("/account/login");
     } else if (!req.session.user) {
         res.redirect("/noaccess");
     }
@@ -17,3 +17,5 @@ router.get("/dashboard", ensureLogin, (req,res)=>{
         title: "Dashboard"
     });
 });
+
+module.exports = router;

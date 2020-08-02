@@ -25,10 +25,15 @@
                             </ul> 
 
                             {{#if session.user}}
+                                <a href="/user/dashboard" class="btn btn-dark">Dashboard</a>
+                                <a href="/account/logout" class="btn btn-dark">Log Out</a>
+                            {{else}} {{#if dataSession.user}}
+                                <a href="/dataClerk/clerkdashboard" class="btn btn-dark">Dashboard</a>
                                 <a href="/account/logout" class="btn btn-dark">Log Out</a>
                             {{else}}
                                 <a href="/account/login" class="btn btn-dark">Log In</a>
                                 <a href="/account/signup" class="btn btn-dark">Sign Up</a>
+                            {{/if}}
                             {{/if}}
                         </nav>
                         

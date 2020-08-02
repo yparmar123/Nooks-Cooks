@@ -3,6 +3,7 @@ const exphbs  = require('express-handlebars');
 const bodyParser = require('body-parser');
 const loginAuth = require("./model/login-auth");
 const clientSessions = require("client-sessions");
+const multer = require("multer");
 
 require('dotenv').config({path:"./config/keys.env"});
 
@@ -28,8 +29,22 @@ app.use(clientSessions({
     activeDuration: 1000 * 60
 }));
 
+const storage = multer.diskStorage({
+    destination: "./public/images",
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({storage: storage});
+
 app.use((req, res, next) => {
     res.locals.session = req.session;
+    next();
+})
+
+app.use((req, res, next) => {
+    res.locals.dataSession = req.dataSession;
     next();
 })
 
@@ -42,10 +57,14 @@ app.use((req, res, next) => {
 const generalController = require("./controllers/general");
 const accountController = require("./controllers/account")
 const productsController = require("./controllers/products");
+const userController = require("./controllers/user");
+const dataClerkController = require("./controllers/dataClerk");
 
 app.use("/", generalController);
 app.use("/account", accountController);
 app.use("/products", productsController);
+app.use("/user", userController);
+app.use("/dataClerk", dataClerkController);
 
 const PORT = process.env.PORT || 3000;
 

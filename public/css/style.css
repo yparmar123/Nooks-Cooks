@@ -118,7 +118,7 @@ footer {
     border-radius: 10px;
 }
 
-form {
+.form form {
     justify-content: space-around;
     align-items: center;
     display: flex;
