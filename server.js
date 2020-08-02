@@ -2,6 +2,7 @@ const express = require("express");
 const exphbs  = require('express-handlebars');
 const bodyParser = require('body-parser');
 const loginAuth = require("./model/login-auth");
+const packageData = require("./model/meal-packages");
 const clientSessions = require("client-sessions");
 const multer = require("multer");
 
@@ -68,7 +69,7 @@ app.use("/dataClerk", dataClerkController);
 
 const PORT = process.env.PORT || 3000;
 
-loginAuth.initialize()
+packageData.initialize()
 .then(loginAuth.initialize)
 .then(()=>{
     app.listen(PORT, ()=>{

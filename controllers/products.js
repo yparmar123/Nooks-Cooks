@@ -1,13 +1,21 @@
 const express = require("express");
 const router = express.Router();
-const fakeDB = require("../model/fakeDB");
+const packageData = require("../model/meal-packages");
 
 router.get("/MealPackages", (req, res) => {
-    res.render("products/package", {
-        title: "Meal Packages Page",
-        packages: fakeDB.PackagesDB,
-        hero: "Our meal packages."
-    });
+    packageData.getAllPackages().then((data) => {
+        res.render("products/package", {
+            title: "Meal Packages Page",
+            packages: data,
+            hero: "Our meal packages."
+        });    
+    }).catch((err) => {
+        res.render("products/package", {
+            title: "Meal Packages Page",
+            packages: [],
+            hero: "Our meal packages."
+        });  
+    }) 
 });
 
 module.exports = router;

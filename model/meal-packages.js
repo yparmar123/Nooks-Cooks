@@ -29,7 +29,7 @@ module.exports.initialize = () => {
 
 module.exports.getAllPackages = () => {
     return new Promise((resolve, reject) => {
-        Package.find().then((data) => {
+        Package.find().lean().then((data) => {
             resolve(data);
         }).catch((err) => {
             reject("query returned 0 results");
@@ -39,7 +39,7 @@ module.exports.getAllPackages = () => {
 
 module.exports.getTopPackages = () => {
     return new Promise((resolve, reject) => {
-        Package.find({topMeal: true}).then((data) => {
+        Package.find({topMeal: true}).lean().then((data) => {
             resolve(data);
         }).catch((err) => {
             reject("query returned 0 results");

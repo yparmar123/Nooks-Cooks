@@ -1,13 +1,21 @@
 const express = require("express");
 const router = express.Router();
-const fakeDB = require("../model/fakeDB");
+const packageData = require("../model/meal-packages");
 
 router.get("/", (req, res)=>{
-    res.render("general/home", {
-        title: "Home Page",
-        products: fakeDB.ProductsDB,
-        hero: "Meals and groceries delivered."
-    });
+    packageData.getTopPackages().then((data) => {
+        res.render("general/home", {
+            title: "Home Page",
+            packages: data,
+            hero: "Meals and groceries delivered."
+        });
+    }).catch((err) => {
+        res.render("general/home", {
+            title: "Home Page",
+            products: [],
+            hero: "Meals and groceries delivered."
+        });
+    })
 });
 
 router.get("/noaccess", (req,res)=> {
