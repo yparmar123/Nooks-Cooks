@@ -1,5 +1,5 @@
 <div class="col-md-12">
-   <h2>Create Meal Package</h2>
+   <h2>{{viewData.package.name}}</h2>
 </div>
 
 <div class="container">
@@ -8,13 +8,13 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="packageID">Package ID:</label>
-                    <input class="form-control" id="packageID" name="packageID" type="text">
+                    <input class="form-control" id="packageID" name="packageID" type="text" value="{{viewData.package.packageID}}">
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="form-group">
                     <label for="name">Meal Package Name:</label>
-                    <input class="form-control" id="packageName" name="name" type="text"/>
+                    <input class="form-control" id="packageName" name="name" type="text" value="{{viewData.package.name}}" />
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="price">Meal Package Price:</label>
-                    <input class="form-control" id="pakagePrice" name="price" type="text"/>
+                    <input class="form-control" id="pakagePrice" name="price" type="text" value="{{viewData.package.price}}"/>
                 </div>
             </div>    
         </div>
@@ -34,7 +34,7 @@
             <div class="col-md-7">
                 <div class="form-group">
                     <label for="description">Meal Package Description:</label>
-                    <textarea class="form-control" id="pakageDescription" name="description" type="text"></textarea>
+                    <textarea class="form-control" id="pakageDescription" name="description" type="text" value="{{viewData.package.description}}"></textarea>
                 </div>
             </div>
         </div>
@@ -44,14 +44,14 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="category">Category:</label>
-                    <input class="form-control" id="foodCategory" name="category" type="text"/>
+                    <input class="form-control" id="foodCategory" name="category" type="text" value="{{viewData.package.category}}"/>
                 </div>
             </div>
        
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="meals">Number of Meals:</label>
-                    <input class="form-control" id="numOfMeals" name="meals" type="text" />
+                    <input class="form-control" id="numOfMeals" name="meals" type="text" value="{{viewData.package.meals}}"/>
                 </div>
             </div>
         </div>
@@ -61,15 +61,6 @@
                 <div class="form-group">
                     <label for="topMeal">Is this package a top package?:</label>
                     <input class="form-control" type="checkbox" name="topMeal" value="true">                                          
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label for="image">Upload Image:</label>
-                    <input class="form-control" id="image" name="image" type="file">
                 </div>
             </div>
         </div>

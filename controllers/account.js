@@ -167,6 +167,7 @@ router.post("/signup", (req,res)=>{
 
 router.get("/logout" , (req, res) =>{
     req.session.reset();
+    req.dataSession.reset();
     res.redirect("/");
 });
 

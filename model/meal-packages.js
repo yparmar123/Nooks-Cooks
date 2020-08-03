@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
 let packageSchema = new Schema({
+    "packageID": {
+        "type": Number,
+        "unique": true
+    },
     "name": String,
     "image": String,
     "price": Number,
@@ -63,3 +67,39 @@ module.exports.addPackage = (packageData) => {
         });
     });
 }
+
+module.exports.getPackageByID = (ID) => {
+    return new Promise((resolve, reject) => {
+        Package.find({packageID: ID}).then((data) => {
+            resolve(data);
+        }).catch(() => {
+            reject("query found 0 results");
+        });
+    });
+};
+
+module.exports.updatePackage = (packageData) => {
+    return new Promise((resolve, reject) => {
+        for(let prop in packageData) {
+            if (packageData[prop] == '') {
+                packageData[prop] = null;
+            }
+        }
+
+        Package.create(packageData).then(() => {
+            resolve();
+        }).catch((e) => {
+            reject("unable to create department");
+        });
+    });
+};
+
+module.exports.deletePackage = (ID) => {
+    return new Promise((resolve, reject) => {
+        Package.deleteOne({packageID: ID}).then(() => {
+            resolve();
+        }).catch((err) => {
+            reject("unable to delete the employee");
+        });
+    });
+};

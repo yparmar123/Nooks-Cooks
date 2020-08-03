@@ -4,13 +4,13 @@ const packageData = require("../model/meal-packages");
 
 router.get("/MealPackages", (req, res) => {
     packageData.getAllPackages().then((data) => {
-        res.render("products/package", {
+        res.render("products/packages", {
             title: "Meal Packages Page",
             packages: data,
             hero: "Our meal packages."
         });    
     }).catch((err) => {
-        res.render("products/package", {
+        res.render("products/packages", {
             title: "Meal Packages Page",
             packages: [],
             hero: "Our meal packages."
