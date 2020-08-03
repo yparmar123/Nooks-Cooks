@@ -9,7 +9,7 @@
         <div class="row">
         
             {{#each packages}}
-
+            
             <div class="col-lg-3 col-md-6">
                 <div class="image">
                     <img src="/img/{{image}}" width="200"> 
@@ -20,8 +20,11 @@
                         {{description}}<br>
                         ${{price}}
                     </p>
+                    <a href="/products/packageDetails/{{packageID}}"><button class="btn btn-dark">View this package</button></a>
                 </div>
+                
             </div>
+            
             {{/each}}
         </div>        
     </div>

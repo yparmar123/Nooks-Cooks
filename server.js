@@ -30,7 +30,6 @@ app.use(clientSessions({
     activeDuration: 1000 * 60
 }));
 
-
 app.use((req, res, next) => {
     res.locals.session = req.session;
     next();

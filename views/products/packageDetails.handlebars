@@ -1,0 +1,31 @@
+<div class="container">
+    
+    {{#each package}}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="image">
+                    <img src="/img/{{image}}" width="400">
+                </div>
+            </div>
+            <div class="col-md-6">
+               <div class="row">
+                   <div class="col-md-12">
+                       <h1>{{name}}</h1>
+                   </div>
+                   <div class="col-md-12">
+                       <h2>${{price}}</h2>
+                   </div>
+                   <div class="col-md-12 description">
+                       <p>{{description}}<br><br>No. of meals: {{meals}}</p>
+                   </div>
+    {{/each}}
+                   <div class="col-md-12">
+                       {{#if session.user}}
+                            <button class="btn btn-dark">Add to cart</button>
+                        {{/if}}
+                   </div>
+               </div> 
+            </div>
+        </div>
+    
+</div>

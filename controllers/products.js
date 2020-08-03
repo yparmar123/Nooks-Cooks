@@ -18,4 +18,15 @@ router.get("/MealPackages", (req, res) => {
     }) 
 });
 
+router.get("/packageDetails/:packageID", (req,res) => {
+    packageData.getPackageByID(req.params.packageID).then((data) => {
+        res.render("products/packageDetails", {
+            title: data.name,
+            package: data
+        });
+    }).catch((err) => {
+        res.status(500).send("Unable to fetch data");
+    });
+});
+
 module.exports = router;
