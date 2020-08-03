@@ -70,7 +70,7 @@ module.exports.addPackage = (packageData) => {
 
 module.exports.getPackageByID = (ID) => {
     return new Promise((resolve, reject) => {
-        Package.find({packageID: ID}).then((data) => {
+        Package.find({packageID: ID}).lean().then((data) => {
             resolve(data);
         }).catch(() => {
             reject("query found 0 results");
@@ -78,18 +78,12 @@ module.exports.getPackageByID = (ID) => {
     });
 };
 
-module.exports.updatePackage = (packageData) => {
+module.exports.updatePackage = (ID, packageData) => {
     return new Promise((resolve, reject) => {
-        for(let prop in packageData) {
-            if (packageData[prop] == '') {
-                packageData[prop] = null;
-            }
-        }
-
-        Package.create(packageData).then(() => {
+        Package.updateOne({packageID: ID}, {$set: packageData}).then(() => {
             resolve();
-        }).catch((e) => {
-            reject("unable to create department");
+        }).catch((err) => {
+            reject("unable to update department");
         });
     });
 };

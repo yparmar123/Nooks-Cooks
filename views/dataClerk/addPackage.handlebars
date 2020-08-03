@@ -3,7 +3,7 @@
 </div>
 
 <div class="container">
-    <form method="post" action="/employees/add">
+    <form method="post" action="/dataClerk/package/add" enctype="multipart/form-data">
         <div class="row">
             <div class="col-md-2">
                 <div class="form-group">
@@ -24,7 +24,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="price">Meal Package Price:</label>
-                    <input class="form-control" id="pakagePrice" name="price" type="text"/>
+                    <input class="form-control" id="packagePrice" name="price" type="text"/>
                 </div>
             </div>    
         </div>
@@ -34,7 +34,7 @@
             <div class="col-md-7">
                 <div class="form-group">
                     <label for="description">Meal Package Description:</label>
-                    <textarea class="form-control" id="pakageDescription" name="description" type="text"></textarea>
+                    <textarea class="form-control" id="packageDescription" name="description" type="text"></textarea>
                 </div>
             </div>
         </div>
@@ -69,12 +69,12 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="image">Upload Image:</label>
-                    <input class="form-control" id="image" name="image" type="file">
+                    <input class="form-control" id="image" name="image" type="file" accept="image/png, image/jpeg, image/gif">
                 </div>
             </div>
         </div>
 
-        <input type="submit" class="btn btn-dark" value="submit">
+        <input type="submit" class="btn btn-dark" value="Submit">
 
     </form>
 

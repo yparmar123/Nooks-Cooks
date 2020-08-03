@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const packageData = require("../model/meal-packages");
-const e = require("express");
+const multer = require("multer");
+const path = require("path");
 
 const dataSession = (req, res, next) => {
     if(!req.dataSession.user && !req.session.user) {
@@ -12,6 +13,15 @@ const dataSession = (req, res, next) => {
         next();
     }
 };
+
+const storage = multer.diskStorage({
+    destination: "./public/img",
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({storage: storage});
 
 router.get("/clerkdashboard", dataSession, (req,res)=>{
     res.render("dataClerk/clerkdashboard", {
@@ -48,27 +58,42 @@ router.get("/packageList/delete/:packageID", dataSession, (req,res) => {
 });
 
 router.get("/package/:packageID", dataSession, (req, res) => {
-    let viewData = {};
     packageData.getPackageByID(req.params.packageID).then((data) => {
-        if (data) {
-            viewData.package = data;
-        } else {
-            viewData.package = null;
-        }
-    }).catch(() => {
-        viewData.package = null;
-    }).then(() => {
-        if(viewData.package === null) {
-            res.status(404).send("Package Not Found");
-        } else {
             res.render("dataClerk/package", {
                 title: "Package Details",
-                viewData: viewData
+                package: data
             });
-        }
+    }).catch(() => {
+        res.status(500).send("Unable to show Package");      
+    });
+});
+
+router.post("/package/update/:packageID", dataSession, (req,res) => {
+    packageData.updatePackage(req.params.packageID, req.body).then(() => {
+        res.redirect("/dataClerk/PackageList");
     }).catch((err) => {
-        res.status(500).send("Unable to show Package")
+        res.status(500).send("Unable to update Package");
+    });
+});
+
+router.post("/package/add", upload.single("image"), dataSession, (req,res) => {
+    packageData.addPackage(req.body).then(() => {
+        packageData.updatePackage(req.body.packageID, {image: path.basename(req.file.path)}).then(()=>{
+            res.redirect("/dataClerk/packageList");
+        }).catch((err) => {
+            res.status(500).send("Unable to add Package");
+        });
+        
+    }).catch((err) => {
+        res.status(500).send("Unable to add Package");
+    });
+});
+
+router.get("/package/delete/:packageID", dataSession, (req,res) => {
+    packageData.deletePackage(req.params.packageID).then(() => {
+        res.redirect("/dataClerk/packageList");
+    }).catch((err) => {
+        res.status(500).send("Unable to Remove Package");
     })
 })
-
 module.exports = router;

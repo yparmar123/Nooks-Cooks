@@ -1,20 +1,21 @@
+{{#each package}}
 <div class="col-md-12">
-   <h2>{{viewData.package.name}}</h2>
+   <h2>{{name}}</h2>
 </div>
 
 <div class="container">
-    <form method="post" action="/employees/add">
+    <form method="POST" action="/dataClerk/package/update/{{packageID}}">
         <div class="row">
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="packageID">Package ID:</label>
-                    <input class="form-control" id="packageID" name="packageID" type="text" value="{{viewData.package.packageID}}">
+                    <input class="form-control" id="packageID" name="packageID" type="text" value="{{packageID}}">
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="form-group">
                     <label for="name">Meal Package Name:</label>
-                    <input class="form-control" id="packageName" name="name" type="text" value="{{viewData.package.name}}" />
+                    <input class="form-control" id="packageName" name="name" type="text" value="{{name}}" />
                 </div>
             </div>
         </div>
@@ -24,7 +25,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="price">Meal Package Price:</label>
-                    <input class="form-control" id="pakagePrice" name="price" type="text" value="{{viewData.package.price}}"/>
+                    <input class="form-control" id="pakagePrice" name="price" type="text" value="{{price}}"/>
                 </div>
             </div>    
         </div>
@@ -34,7 +35,7 @@
             <div class="col-md-7">
                 <div class="form-group">
                     <label for="description">Meal Package Description:</label>
-                    <textarea class="form-control" id="pakageDescription" name="description" type="text" value="{{viewData.package.description}}"></textarea>
+                    <textarea class="form-control" id="pakageDescription" name="description" type="text">{{description}}</textarea>
                 </div>
             </div>
         </div>
@@ -44,14 +45,14 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="category">Category:</label>
-                    <input class="form-control" id="foodCategory" name="category" type="text" value="{{viewData.package.category}}"/>
+                    <input class="form-control" id="foodCategory" name="category" type="text" value="{{category}}"/>
                 </div>
             </div>
        
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="meals">Number of Meals:</label>
-                    <input class="form-control" id="numOfMeals" name="meals" type="text" value="{{viewData.package.meals}}"/>
+                    <input class="form-control" id="numOfMeals" name="meals" type="text" value="{{meals}}"/>
                 </div>
             </div>
         </div>
@@ -70,3 +71,4 @@
     </form>
 
 </div>
+{{/each}}

@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const loginAuth = require("./model/login-auth");
 const packageData = require("./model/meal-packages");
 const clientSessions = require("client-sessions");
-const multer = require("multer");
+
 
 require('dotenv').config({path:"./config/keys.env"});
 
@@ -30,14 +30,6 @@ app.use(clientSessions({
     activeDuration: 1000 * 60
 }));
 
-const storage = multer.diskStorage({
-    destination: "./public/images",
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname));
-    }
-});
-
-const upload = multer({storage: storage});
 
 app.use((req, res, next) => {
     res.locals.session = req.session;

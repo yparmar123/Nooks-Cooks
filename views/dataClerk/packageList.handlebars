@@ -2,6 +2,7 @@
 <div class="row">
     <div class="col-md-12">
         <h2>Packages <a href="/dataClerk/addPackage" class="btn btn-dark pull-right">Add Meal Package</a></h2>
+        
         <hr />
         <div class="table-responsive">
             <table class="table">
@@ -23,7 +24,7 @@
                             <td>{{price}}</td>
                             <td>{{meals}}</td>
                             <td>{{category}}</td>
-                            <td><a href="/dataClerk/packageList/{{packageID}}" class="btn btn-danger">Remove</a></td>
+                            <td><a href="/dataClerk/package/delete/{{packageID}}" class="btn btn-danger">Remove</a></td>
                         </tr>
                     {{/each}}
                 </tbody>
