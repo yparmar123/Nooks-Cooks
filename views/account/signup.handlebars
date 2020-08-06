@@ -1,19 +1,21 @@
 <h2>Create Account </h2>
 <div class="form">
     <form method="POST" action="signup" id="sign">
-        <div class="error">{{err}}</div>
-        <label for="fName">First Name: </label>
-        <input type="text" name="fName" value={{fValue}}>
-        <div class="error">{{fNameError}}</div>
-        <label for="lName">Last Name: </label>
-        <input type="text" name="lName" value={{lValue}}>
-        <div class="error">{{lNameError}}</div>
-        <label for="email">Email: </label>
-        <input type="email" name="email" value={{eValue}}>
-        <div class="error">{{emailError}}</div>
-        <label for="password">Password: </label>
-        <input type="password" name="password" value={{pValue}}>
-        <div class="error">{{passError}}</div>
-        <button value="submit" class="btn btn-dark" name="sign">Sign Up</button>
+        <div class="form=group">
+            <div class="error">{{err}}</div>
+            <label for="fName">First Name: </label>
+            <input class="form-control" type="text" name="fName" value={{fValue}}>
+            <div class="error">{{fNameError}}</div>
+            <label for="lName">Last Name: </label>
+            <input class="form-control" type="text" name="lName" value={{lValue}}>
+            <div class="error">{{lNameError}}</div>
+            <label for="email">Email: </label>
+            <input class="form-control" type="email" name="email" value={{eValue}}>
+            <div class="error">{{emailError}}</div>
+            <label for="password">Password: </label>
+            <input class="form-control" type="password" name="password" value={{pValue}}>
+            <div class="error">{{passError}}</div>
+        </div>
+            <button value="submit" class="btn btn-dark" name="sign">Sign Up</button>
     </form>
 </div>

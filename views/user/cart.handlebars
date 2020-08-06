@@ -1,0 +1,41 @@
+<div class="container">
+<div class="row">
+    <div class="col-md-12">
+        <h2>Shopping Cart</h2>
+        
+        <hr />
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Package&nbsp;ID</th>
+                        <th>Package&nbsp;Name</th>
+                        <th>Price</th>
+                        <th>Meals</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each data}}
+                        <tr>
+                            <td><a href="/products/packageDetails/{{packageID}}">{{packageID}}</a></td>
+                            <td>{{name}}</td>
+                            <td>{{price}}</td>
+                            <td>{{meals}}</td>
+                            <td>{{category}}</td>
+                            <td><a href="/user/removeItem/{{packageID}}" class="btn btn-danger">Remove</a></td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">Total: </td>
+                        <td colspan="4">{{total}}</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+</div>

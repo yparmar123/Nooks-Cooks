@@ -143,9 +143,7 @@ button {
 }
 
 input {
-    width: 290px;
     border-radius: 5px;
-    border-style: outset;
     margin: 5px;
 }
 
