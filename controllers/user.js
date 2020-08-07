@@ -59,16 +59,43 @@ router.get("/removeItem/:packageID", ensureLogin, (req,res) => {
     
 })
 
-router.get("/addPackage/:packageID", ensureLogin, (req,res) => {
-    products.getPackageByID(req.params.packageID).then((data) => {
-        cart.addItem(data[0]).then(() => {
-            res.redirect("/products/mealPackages");
+router.post("/addProduct", ensureLogin, (req,res) => {
+    products.getPackageByID(req.body.packageID).then((data) => {
+        cart.addItem(data[0], req.body.quantity).then(() => {
+            res.redirect("/user/cart");
         }).catch((err) => {
             res.status(500).send("Unable to add to cart");
         });
     }).catch((err) => {
         res.status(500).send("Unable to get package");
     })
+});
+
+router.get("/placeOrder", ensureLogin, (req,res) => {
+    cart.checkout().then((total) => {    
+        cart.getCart().then((items) => {
+            cart.makeEmail(items, req.session.user, total).then((email) =>{
+                const sgMail = require('@sendgrid/mail');
+                sgMail.setApiKey(`${process.env.SENDGRID_API_KEY}`);
+                const msg = {
+                to: `${req.session.user.email}`,
+                from: `yuvrajparmar1060@gmail.com`,
+                subject: "You Receipt",
+                html: email
+                };
+                sgMail.send(msg)
+                .then(()=>{
+                    cart.emptyCart().then(() => {
+                        res.redirect("/user/dashboard");
+                    })
+                    
+                }).catch(err=>{
+                    console.log(`Error: ${err}`);
+                });
+            });
+             
+        });
+    });
 })
 
 

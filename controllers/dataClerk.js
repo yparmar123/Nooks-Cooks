@@ -61,7 +61,7 @@ router.get("/package/:packageID", dataSession, (req, res) => {
     packageData.getPackageByID(req.params.packageID).then((data) => {
             res.render("dataClerk/package", {
                 title: "Package Details",
-                package: data
+                package: data[0]
             });
     }).catch(() => {
         res.status(500).send("Unable to show Package");      
@@ -81,11 +81,11 @@ router.post("/package/add", upload.single("image"), dataSession, (req,res) => {
         packageData.updatePackage(req.body.packageID, {image: path.basename(req.file.path)}).then(()=>{
             res.redirect("/dataClerk/packageList");
         }).catch((err) => {
-            res.status(500).send("Unable to add Package");
+            res.status(500).send("Unable to add Package " + err);
         });
         
     }).catch((err) => {
-        res.status(500).send("Unable to add Package");
+        res.status(500).send("Unable to add Package " + err);
     });
 });
 

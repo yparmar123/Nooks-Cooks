@@ -11,7 +11,7 @@
                         <th>Package&nbsp;ID</th>
                         <th>Package&nbsp;Name</th>
                         <th>Price</th>
-                        <th>Meals</th>
+                        <th>Quantity</th>
                         <th>Price</th>
                         <th></th>
                     </tr>
@@ -21,8 +21,8 @@
                         <tr>
                             <td><a href="/products/packageDetails/{{packageID}}">{{packageID}}</a></td>
                             <td>{{name}}</td>
-                            <td>{{price}}</td>
-                            <td>{{meals}}</td>
+                            <td>${{price}}</td>
+                            <td>{{quantity}}</td>
                             <td>{{category}}</td>
                             <td><a href="/user/removeItem/{{packageID}}" class="btn btn-danger">Remove</a></td>
                         </tr>
@@ -31,7 +31,8 @@
                 <tfoot>
                     <tr>
                         <td colspan="2">Total: </td>
-                        <td colspan="4">{{total}}</td>
+                        <td colspan="3">${{total}}</td>
+                        <td><a href="/user/placeOrder"><btn class="btn btn-dark">Place Order</btn></a></td>
                     </tr>
                 </tfoot>
             </table>

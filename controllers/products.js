@@ -22,7 +22,7 @@ router.get("/packageDetails/:packageID", (req,res) => {
     packageData.getPackageByID(req.params.packageID).then((data) => {
         res.render("products/packageDetails", {
             title: data.name,
-            package: data
+            package: data[0]
         });
     }).catch((err) => {
         res.status(500).send("Unable to fetch data");
