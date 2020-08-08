@@ -12,7 +12,6 @@
                         <th>Package&nbsp;Name</th>
                         <th>Price</th>
                         <th>Quantity</th>
-                        <th>Price</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -23,7 +22,6 @@
                             <td>{{name}}</td>
                             <td>${{price}}</td>
                             <td>{{quantity}}</td>
-                            <td>{{category}}</td>
                             <td><a href="/user/removeItem/{{packageID}}" class="btn btn-danger">Remove</a></td>
                         </tr>
                     {{/each}}
@@ -31,7 +29,7 @@
                 <tfoot>
                     <tr>
                         <td colspan="2">Total: </td>
-                        <td colspan="3">${{total}}</td>
+                        <td colspan="2">${{total}}</td>
                         <td><a href="/user/placeOrder"><btn class="btn btn-dark">Place Order</btn></a></td>
                     </tr>
                 </tfoot>

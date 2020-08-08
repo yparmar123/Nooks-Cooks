@@ -60,8 +60,8 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="topMeal">Is this package a top package?:</label>
-                    <input class="form-control" type="checkbox" name="topMeal" value="true">                                          
+                    <label for="topMeal">Is this package{{#if package.topMeal}} not{{/if}} a top package?:</label>
+                    <input class="form-control" type="checkbox" name="topMeal"  {{#if package.topMeal}}value="false" {{else}} value="true"{{/if}}>                                          
                 </div>
             </div>
         </div>

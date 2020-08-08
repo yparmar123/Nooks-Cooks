@@ -60,13 +60,13 @@ module.exports.makeEmail = (data, user, total) => {
         let email = `Hello ${user.fName} ${user.lName},<br><br>
         We have attached your receipt for today below! Have a nice day!<br><br>
         <h2>Receipt</h2><br>
-        <table style="width:100%""> <thead> <tr> <th style="border: 1px solid black>Package</th> <th style="border: 1px solid black>Quantity</th> <th style="border: 1px solid black>Price</th> </tr> </thead><tbody>`;
+        <table> <thead> <tr> <th>Package</th> <th>Quantity</th> <th>Price</th> </tr> </thead><tbody>`;
         let receipt = "";
         data.forEach(element => {
-            receipt = `<tr><td style="border: 1px solid black>${element.name}</td> <td style="border: 1px solid black>${element.quantity}</td> <td style="border: 1px solid black>${element.price}</td> </tr>`;
+            receipt = `<tr><td>${element.name}</td> <td>${element.quantity}</td> <td>${element.price}</td> </tr>`;
             email += receipt;
         });
-        email += `<tfoot> <tr> <td style="border: 1px solid black>Total: ${total}</td></tr></tfoot></table>`;
+        email += `<tfoot> <tr> <td>Total: ${total}</td></tr></tfoot></table>`;
         resolve(email);
 
     });
