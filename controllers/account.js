@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const loginAuth = require("../model/login-auth");
+const cart = require("../model/cart");
 
 router.get("/login", (req, res)=>{
     res.render("account/login", {
@@ -166,9 +167,16 @@ router.post("/signup", (req,res)=>{
 });
 
 router.get("/logout" , (req, res) =>{
-    req.session.reset();
-    req.dataSession.reset();
-    res.redirect("/");
+    cart.emptyCart().then(() =>{
+        req.session.reset();
+        req.dataSession.reset();
+        res.redirect("/");
+    }).catch((err) => {
+        req.session.reset();
+        req.dataSession.reset();
+        res.redirect("/");
+    })
+    
 });
 
 module.exports = router;
