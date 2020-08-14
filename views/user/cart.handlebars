@@ -1,22 +1,22 @@
 <div class="container">
-<div class="row">
-    <div class="col-md-12">
-        <h2>Shopping Cart</h2>
-        
-        <hr />
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Package&nbsp;ID</th>
-                        <th>Package&nbsp;Name</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each data}}
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Shopping Cart</h2>
+
+            <hr />
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Package&nbsp;ID</th>
+                            <th>Package&nbsp;Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each data}}
                         <tr>
                             <td><a href="/products/packageDetails/{{packageID}}">{{packageID}}</a></td>
                             <td>{{name}}</td>
@@ -24,17 +24,19 @@
                             <td>{{quantity}}</td>
                             <td><a href="/user/removeItem/{{packageID}}" class="btn btn-danger">Remove</a></td>
                         </tr>
-                    {{/each}}
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="2">Total: </td>
-                        <td colspan="2">${{total}}</td>
-                        <td><a href="/user/placeOrder"><btn class="btn btn-dark">Place Order</btn></a></td>
-                    </tr>
-                </tfoot>
-            </table>
+                        {{/each}}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">Total: </td>
+                            <td colspan="2">${{total}}</td>
+                            <td><a href="/user/placeOrder">
+                                    <btn class="btn btn-dark">Place Order</btn>
+                                </a></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 </div>

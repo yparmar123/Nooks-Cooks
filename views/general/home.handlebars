@@ -1,13 +1,13 @@
 <div class="hero">
     <div class="hero-text">
-    <h1>{{hero}}</h1>
+        <h1>{{hero}}</h1>
     </div>
 </div>
 
 <h2>No cooking, just eating</h2>
-    <div class="container">
+<div class="container">
     <div class="row">
-        
+
         <div class="col-lg-3 col-md-6">
             <div class="image">
                 <img src="/img/Pick_1.gif" alt="pick" width="140">
@@ -37,7 +37,7 @@
                 <p>Delicious & nutritious</p>
             </div>
         </div>
-        
+
         <div class="col-lg-3 col-md-6">
             <div class="image">
                 <img src="/img/repeat---Copy.gif" alt="repeat" width="140">
@@ -47,29 +47,30 @@
                 <p>Skip a week or cancel any time</p>
             </div>
         </div>
-        
-    </div>
-    </div>
 
-    <h2>Our chefs are making these right now!</h2>
-    <div class="container">
+    </div>
+</div>
+
+<h2>Our chefs are making these right now!</h2>
+<div class="container">
     <div class="row">
-        
+
         {{#each packages}}
-            <div class="col-lg-3 col-md-6">
-                <div class="image">
-                    <img src="/img/{{image}}" width="200"> 
-                </div>
-                <div class="description">
-                    <h3>{{name}}</h3>
-                    <p>
-                        {{description}}<br>
-                        ${{price}}
-                    </p>
-                    <a href="/products/packageDetails/{{packageID}}"><button class="btn btn-dark">View this package</button></a>
-                </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="image">
+                <img src="/img/{{image}}" width="200">
             </div>
-            {{/each}}
-        
+            <div class="description">
+                <h3>{{name}}</h3>
+                <p>
+                    {{description}}<br>
+                    ${{price}}
+                </p>
+                <a href="/products/packageDetails/{{packageID}}"><button class="btn btn-dark">View this
+                        package</button></a>
+            </div>
+        </div>
+        {{/each}}
+
     </div>
-    </div>
+</div>

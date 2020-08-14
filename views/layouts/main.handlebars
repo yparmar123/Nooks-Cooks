@@ -1,78 +1,82 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <link rel="stylesheet" href="/css/style.css">
-        
-        <title>{{title}}</title>
-    </head>
-    <body>
-        <header>
-            <div class="container">
-                <div class="row justify-content-center">
-                    
-                    <div class="col-lg-5 col-md-12" id="logo">
-                        <a href="/"><img src="/img/Logo.png" class="img-fluid" alt="Responsive image"></a>
-                    </div>
-                    <div class="col-lg-7 col-md-12" id="nav">
-                        <nav class="navbar">
-                            <ul>
-                                <li><a href="/">Home</a></li>
-                                <li><a href="/products/MealPackages">Meal Packages</a></li>               
-                            </ul> 
+<html lang="en">
 
-                            {{#if session.user}}
-                                <a href="/user/dashboard" class="btn btn-dark">Dashboard</a>
-                                <a href="/account/logout" class="btn btn-dark">Log Out</a>
-                            {{else}} {{#if dataSession.user}}
-                                <a href="/dataClerk/clerkdashboard" class="btn btn-dark">Dashboard</a>
-                                <a href="/account/logout" class="btn btn-dark">Log Out</a>
-                            {{else}}
-                                <a href="/account/login" class="btn btn-dark">Log In</a>
-                                <a href="/account/signup" class="btn btn-dark">Sign Up</a>
-                            {{/if}}
-                            {{/if}}
-                        </nav>
-                        
-                    </div>
-                    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <title>{{title}}</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="col-lg-5 col-md-12" id="logo">
+                    <a href="/"><img src="/img/Logo.png" class="img-fluid" alt="Responsive image"></a>
+                </div>
+                <div class="col-lg-7 col-md-12" id="nav">
+                    <nav class="navbar">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/products/MealPackages">Meal Packages</a></li>
+                        </ul>
+
+                        {{#if session.user}}
+                        <a href="/user/dashboard" class="btn btn-dark">Dashboard</a>
+                        <a href="/account/logout" class="btn btn-dark">Log Out</a>
+                        {{else}} {{#if dataSession.user}}
+                        <a href="/dataClerk/clerkdashboard" class="btn btn-dark">Dashboard</a>
+                        <a href="/account/logout" class="btn btn-dark">Log Out</a>
+                        {{else}}
+                        <a href="/account/login" class="btn btn-dark">Log In</a>
+                        <a href="/account/signup" class="btn btn-dark">Sign Up</a>
+                        {{/if}}
+                        {{/if}}
+                    </nav>
+
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <main>
+        {{{body}}}
+    </main>
+
+    <footer>
+        <div class="row">
+            <div class="col-lg-4">
+                <p>
+                    © 2020 Nook's Cooks North America Inc.
+                </p>
+            </div>
+            <div class="col-lg-4">
+                <div class="socialMedia">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-google"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-linkedin"></a>
                 </div>
             </div>
-        </header>
-        
-        <main>
-            {{{body}}}
-        </main>
-        
-        <footer>
-            <div class="row">
-                <div class="col-lg-4">    
-                    <p>
-                        © 2020 Nook's Cooks North America Inc.
-                    </p>
-                </div>
-                <div class="col-lg-4">
-                    <div class="socialMedia">
-                        <a href="#" class="fa fa-facebook"></a>
-                        <a href="#" class="fa fa-google"></a>
-                        <a href="#" class="fa fa-twitter"></a>
-                        <a href="#" class="fa fa-linkedin"></a>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="paymentIMG">
-                        <img src="/img/amex.svg">
-                        <img src="/img/apple.svg">
-                        <img src="/img/google.svg">
-                        <img src="/img/master.svg">
-                        <img src="/img/shopify.svg">
-                        <img src="/img/visa.svg">
-                    </div>
+            <div class="col-lg-4">
+                <div class="paymentIMG">
+                    <img src="/img/amex.svg">
+                    <img src="/img/apple.svg">
+                    <img src="/img/google.svg">
+                    <img src="/img/master.svg">
+                    <img src="/img/shopify.svg">
+                    <img src="/img/visa.svg">
                 </div>
             </div>
-        </footer>
-    </body>
-    </html>
+        </div>
+    </footer>
+</body>
+
+</html>
