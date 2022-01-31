@@ -23,7 +23,6 @@ module.exports.initialize = () => {
     let db = mongoose.createConnection(process.env.MONGODB_CONNECTION_STRING, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useCreateIndex: true,
     });
     db.on("error", (err) => {
       reject(err);
